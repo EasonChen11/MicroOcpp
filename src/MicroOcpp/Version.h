@@ -25,11 +25,17 @@ namespace MicroOcpp {
 /*
  * OCPP version type, defined in Model
  */
+#if MO_ENABLE_V201
+struct ProtocolVersion {
+    const int major, minor, patch;
+    ProtocolVersion(int major = 2, int minor = 0, int patch = 1) : major(major), minor(minor), patch(patch) { }
+};
+#else
 struct ProtocolVersion {
     const int major, minor, patch;
     ProtocolVersion(int major = 1, int minor = 6, int patch = 0) : major(major), minor(minor), patch(patch) { }
 };
-
+#endif
 }
 
 #endif //__cplusplus
